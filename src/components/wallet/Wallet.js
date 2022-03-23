@@ -1,23 +1,14 @@
 import React from "react";
+import { Header } from "../header";
 import Layout from "../layout/layout";
 
 const Wallet = () => {
   return (
     <Layout>
-      <div>
-        <p
-          style={{
-            color: "blue",
-            fontSize: 40,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: 100,
-          }}
-        >
+      <Header title='Wallet'/>
+      <p className='other-pages'>
          Coming Soon
         </p>
-      </div>
     </Layout>
   );
 };

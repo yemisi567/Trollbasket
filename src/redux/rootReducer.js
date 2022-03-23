@@ -1,10 +1,9 @@
-import {combineReducers } from 'redux';
-import productReducer from './products';
+import { combineReducers } from "redux";
 
+import products from "./products/slice";
+import cart from "./cart/slice";
 
-export default function rootReducer () {
-   return combineReducers({
-       products: productReducer,
-       test: []
-   })
-}
+export default combineReducers({
+  products,
+  cart,
+});

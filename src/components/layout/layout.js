@@ -9,7 +9,8 @@ const LayoutWrapper = styled.div`
     flex-wrap: nowrap;
     flex-direction: column;
     width: 100%;
-    overflow: hidden;
+    height: 100%;
+    overflow: ${({ overflow }) => overflow || 'hidden'};
     background-color: #edf2f7;
     padding: 0;
 `;
@@ -20,9 +21,7 @@ const Background = styled.div`
     width: 100%;
     background: #edf2f7;
     margin: 0 auto;
-    top: 65px;
-    min-height: ${({ fullHeight }) => (fullHeight ? '100vh' : 'calc(100vh - 65px)')};
-
+    min-height: ${({ fullHeight }) => (fullHeight ? '100vh' : 'calc(100vh - 6px)')};
     @media (max-width: 576px) {
         top: 0;
         min-height: 100vh;
@@ -42,22 +41,16 @@ const DesktopStyledWidth = styled.div`
     }
 `;
 
-const BlueBackground = styled.div`
-    position: absolute;
-    height: ${({ height }) => height};
-    width: 100%;
-    background: blue;
-`;
 
 const Layout = ({
-    children
+    children,
+    overflow,
 }) => {
     return (
         <Fragment>
-            <LayoutWrapper>
+            <LayoutWrapper overflow={overflow}>
                 <Background>
                     <DesktopStyledWidth>
-                        <BlueBackground/>
                         {children}
                     </DesktopStyledWidth>
                 </Background>

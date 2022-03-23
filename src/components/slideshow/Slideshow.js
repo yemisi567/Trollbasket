@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../../App.css";
 import Banner from "./assets/banner.svg";
 import Bg from "./assets/greenBg.jpg";
 import Bg2 from "./assets/greenBg2.jpg";
 import styled from "styled-components";
+import { Button, Flex } from "../../pages/product-details/style";
 
-const colors = [
+const backgroundImages = [
   {
     type: Banner,
-    
   },
   {
     type: Bg,
@@ -26,22 +26,30 @@ const BackgroundItem = styled.div`
   background-size: cover;
   background: ${(props) => `url(${props.imgUrl})`};
 `;
-function Slideshow() {
-  const [index, setIndex] = React.useState(0);
-  const timeoutRef = React.useRef(null);
 
-  function resetTimeout() {
+const Text = styled.div`
+  font-weight: 700;
+  color: white;
+  font-size: 12px;
+  line-height: 18px;
+  margin: 7% 0 0 7%;
+`;
+
+const Slideshow = () => {
+  const [index, setIndex] = useState(0);
+  const timeoutRef = useRef(null);
+  const resetTimeout = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     resetTimeout();
     timeoutRef.current = setTimeout(
       () =>
         setIndex((prevIndex) =>
-          prevIndex === colors.length - 1 ? 0 : prevIndex + 1
+          prevIndex === backgroundImages.length - 1 ? 0 : prevIndex + 1
         ),
       delay
     );
@@ -57,39 +65,38 @@ function Slideshow() {
         className="slideshowSlider"
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >
-        {colors.map((item, index) => (
+        {backgroundImages.map((item, index) => (
           <BackgroundItem
             className="slide"
             key={index}
             alt=""
             imgUrl={item?.type}
           >
-            <h1>
-              <div className="row">
-                <div className="column">
-                  <h3
-                    style={{
-                      fontWeight: 700,
-                      color: "white",
-                      fontSize: 12,
-                      marginTop: 50,
-                    }}
+            <div>
+              <Flex>
+                <Text>
+                  Having any <span style={{ color: "coral" }}>issues</span> with
+                  <br />
+                  your order?
+                </Text>
+                <div className="button-container">
+                  <Button
+                    border="none"
+                    padding="0px 15px"
+                    top="4%"
+                    height="35px"
+                    size="10px"
                   >
-                    Having any <span style={{ color: "coral" }}>issues</span>{" "}
-                    with
-                    <br />
-                    your order?
-                  </h3>
+                    Contact Us
+                  </Button>
                 </div>
-                <div className="column">
-                  <button className="button button2">Contact Us</button>
-                </div>
-              </div>
-            </h1>
+              </Flex>
+            </div>
           </BackgroundItem>
         ))}
       </div>
     </div>
   );
 }
+
 export default Slideshow;

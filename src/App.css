@@ -1,61 +1,18 @@
-html,
-body {
+html body {
   width: auto !important;
   overflow-x: hidden !important;
 }
 
+@font-face {
+  font-family: "Noto Sans Jap";
+  src: url("/src/fonts/Noto\ Sans\ JP\ 400.otf");
+}
+
 body {
-  font-family: "Noto Sans JP";
+  font-family: "Noto Sans Jap";
 }
 * {
   box-sizing: border-box;
-}
-/*First Section*/
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-th,
-td {
-  border: 1px solid #c6c7cc;
-  padding: 10px 15px;
-}
-th {
-  font-weight: bold;
-}
-thead tr th {
-  height: 30px;
-  line-height: 30px;
-
-  /*text-align: left;*/
-}
-tbody td:last-child,
-thead th:last-child {
-  border-right: none !important;
-}
-
-/*First row end*/
-
-.searchContainer {
-  display: inline-flex;
-  flex: 1;
-  position: relative;
-  border: 1px solid skyblue;
-  background-color: #edf2f7;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-
-.searchIcon {
-  padding: 10px;
-  size: 2ex;
-}
-
-.searchBox {
-  flex: 1;
-  border: none;
-  margin-top: 10;
 }
 
 /*Create a responsive Carousel*/
@@ -84,42 +41,18 @@ body h1 {
   text-align: center;
 }
 
-/* Clear floats after the columns */
-.column {
-  float: left;
-  width: 50%;
-  height: 139px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Create a responsive, centered, three-column grid. */
-.card-container {
-  margin-top: 50px;
-  align-items: start;
-  display: grid;
-  grid-gap: 30px;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  justify-content: center;
-}
-
-.card-container2 {
+.other-pages {
+  color: blue;
+  font-size: 40px;
   display: flex;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  justify-content: space-evenly;
-  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 50%;
 }
-
-.card {
-  color: white;
-  padding: 50 0 0 0;
-  text-align: center;
-  border: none;
+.button-container {
+  margin: -1% 0 0 -5%;
+  padding: 25px
 }
 .nav {
   position: absolute;
@@ -150,7 +83,7 @@ body h1 {
   transition: background-color 0.1s ease-in-out;
 }
 .slideshow {
-  margin: 0 auto;
+  margin: 20px auto;
   overflow: hidden;
   max-width: 90%;
 }
@@ -163,8 +96,8 @@ body h1 {
 .slide {
   margin-top: 20px;
   display: inline-block;
-  height: 100%;
   width: 100%;
+  min-height: calc(20vh - 6px);
   border-radius: 10px;
 }
 
@@ -173,27 +106,60 @@ body h1 {
   background-color: #227eff;
   border: none;
   color: white;
+  width: 91px;
+  height: 31px;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin-right: 60px;
+  margin-right: 5%;
   cursor: pointer;
   border-radius: 4px;
   margin-top: 50px;
 }
-.slideshowDots {
-  text-align: center;
+
+.menu {
+  background: #ffffff;
+  border-radius: 8px;
+  position: absolute;
+  top: 60px;
+  width: 300px;
+  z-index: 200;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
 }
 
-.slideshowDot {
-  display: inline-block;
-  height: 20px;
-  width: 20px;
+.menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
 
-  cursor: pointer;
-  margin: 15px 7px 0px;
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-  background-color: #c4c4c4;
+.menu li {
+  border-bottom: 1px solid #dddddd;
+  text-decoration: none;
+  color: #333333;
+  padding: 15px 20px;
+  display: block;
+}
+
+.icon-text {
+  font-size: 12px;
+  font-weight: 400;
+  color: #071827;
+  margin-left: 5px;
+}
+
+.icon {
+  margin-top: 4px;
 }
